@@ -7,7 +7,7 @@ import './SigninSignupPage.scss'
 const SigninSignupPage = () => {
     console.log("sing")
     return (
-        <div>
+        <div className="sign-in-and-sign-up">
             <SignIn />
             <SignUp />
         </div>
