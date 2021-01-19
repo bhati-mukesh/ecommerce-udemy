@@ -5,8 +5,9 @@ import './ShopPage.scss'
 
 const ShopePage = () => {
     const [collections,setCollections] = useState(SHOP_DATA)
+    console.log("shop data",collections)
     return (
-        <div className="shope-page">
+        <div className="shop-page">
             {
                 collections.map(({ id, ...otherCollectionProps })=>{
                     return (<CollectionPreview key={id} {...otherCollectionProps} />)
