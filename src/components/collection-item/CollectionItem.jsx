@@ -6,7 +6,8 @@ import './CollectionItem.scss'
 
 
 const CollectionItem = ({ item , addItem }) => {
-    const { id, name, price, imageUrl } = item;
+    //const { id, name, price, imageUrl } = item;
+    const {  name, price, imageUrl } = item;
     return (
         <div className="collection-item">
             <div 

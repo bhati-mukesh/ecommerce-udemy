@@ -2,7 +2,6 @@ import React from 'react';
 import './CartIcon.scss'
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 import { connect } from 'react-redux';
-import { TOGGLE_CART_HIDDEN } from '../../redux/constants';
 import { toggleCartHidden } from '../../redux/cart/cartAction';
 import { selectCartItemsCount } from '../../redux/cart/cartSelector';
 import { createStructuredSelector } from 'reselect';
