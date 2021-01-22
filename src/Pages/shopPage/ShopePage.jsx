@@ -7,6 +7,7 @@ import CollectionPage from '../collection/CollectionPage'
 
 const ShopePage = ({ match }) => {
     console.log("shop page");
+    console.log(match)
     return (
         <div className="shop-page">
             <Route exact path={`${match.path}`} component={CollectionOverview} />
@@ -14,6 +15,5 @@ const ShopePage = ({ match }) => {
         </div>
     );
 };
-
 
 export default  ShopePage;
