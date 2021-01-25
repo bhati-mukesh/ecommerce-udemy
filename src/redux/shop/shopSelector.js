@@ -26,3 +26,5 @@ export const selectCollection = collectionUrlParam =>
     [selectCollections],
     collections => collections.find( collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam] )
   );
+
+ 
