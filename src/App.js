@@ -15,42 +15,39 @@ import CheckOut from './Pages/checkout/CheckOut';
 
 
 
-class  App extends React.Component  {
-  
+class App extends React.Component {
+
   unSubscribeFromAuth = null;
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.unSubscribeFromAuth();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const { setCurrentUser } = this.props;
-    this.unSubscribeFromAuth = auth.onAuthStateChanged( async userAuth => {
-      if(userAuth){
+    this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {    
+        userRef.onSnapshot(snapShot => {
           setCurrentUser({
-              id: snapShot.id,
-              ...snapShot.data()
+            id: snapShot.id,
+            ...snapShot.data()
           })
         })
-      }else{
+      } else {
         setCurrentUser(userAuth)
       }
-      // createUserProfileDocument(user)
-      // this.setState({ currentUser: user });
-      // console.log(user)
     })
   }
-  
-  render(){
+
+  render() {
     return (
       <div className="App">
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path="/checkout" component={CheckOut} />
-          <Route exact path="/signin" render = { ()=> this.props.currentUser ? (<Redirect to="/" />) : (<SigninSignupPage />) }  />
+          <Route exact path="/signin" render={() => this.props.currentUser ? (<Redirect to="/" />) : (<SigninSignupPage />)} />
           <Route exact path="/signup" component={SigninSignupPage} />
           <Route path="/shop" component={ShopePage} />
         </Switch>
@@ -63,8 +60,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 })
 
-const mapDispatchToProps = (dispatch)=>({
-  setCurrentUser : user => dispatch(setCurrentUser(user))
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
